@@ -1,0 +1,75 @@
+ /* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+    
+/* Add a gray background color and some padding to the footer */
+footer {
+    background-color: #f2f2f2;
+    padding: 25px;
+}
+.text-cs{
+	font-size: 18px;
+	text-align: center;
+}
+.text-cm{
+	font-size: 18px;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0px;
+}
+.text-cx{
+	font-size: 18px;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0px;
+}
+.dimHeight{
+	padding: 11px;
+    border-radius: 5px;
+    background-color: #ebffff;
+    width: 150px;
+}
+.text-sgtn{
+	font-size: 18px;
+	color: red;
+}
+.stick-bottom{
+	bottom: 0;
+	position: absolute;
+	width: 100%;
+	bottom: -200px;
+}
+.txtHeight{
+	font-size: 18px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #b3b3b3;
+}
+.btnCal{
+	background-color: #31708f;
+    color: #fff;
+    border-radius: 30px;
+    padding: 10px;
+    font-size: 20px;
+    width: 100%;
+}
+.txtBMI{
+	font-size: 25px;
+    text-align: center;
+    margin: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .text-cm{
+		font-size: 18px;
+	    padding: 26px;
+	    border-radius: 10px;
+	    margin: 20px 0px 0px -15px;
+	}
+	.stick-bottom {
+	    bottom: 0;
+	    width: 100%;
+	}
+}
