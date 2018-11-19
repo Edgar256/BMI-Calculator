@@ -1,22 +1,45 @@
- function computeBMI() {
-      //Obtain user inputs
-     var height = Number(document.getElementById("height").value);
-     var heightunits = document.getElementById("heightunits").value;
-     var weight = Number(document.getElementById("weight").value);
-     var weightunits = document.getElementById("weightunits").value;
+$(document).ready(function () {
+
+      function computeBMI() {
+        var ht = document.getElementById("height").value ;
+        var wt = document.getElementById("weight").value ;
+        var comment;
+        var sqHt = ht * ht;
+        var bmi = wt/sqHt;
+        
+        document.getElementById("result").innerHTML = bmi;
 
 
-     //Convert all units to metric
-     if (heightunits == "inches") height /= 39.3700787;
-     if (weightunits == "lb") weight /= 2.20462;
+        if(bmi<18.5){
+           comment = "You are Underweight, please see a doctor immediately";
+        }
+        else if(bmi>18.5 && bmi<24.9){
+           comment = "You are in the normal weight range, keep it up";
+        }
+        else if(bmi>25 && bmi<29.9){
+           comment = "You are in the overweight range, please watch your diet";
+        }
+        else if(bmi>30){
+           comment = "You are grossly overweight, please see a doctor immediately";
+        }
+        else{
+          comment = "Please enter your weight and height";
+        }
 
-     //Perform calculation
-     var BMI = weight / Math.pow(height, 2);
-     //Display result of calculation
-document.getElementById("output").innerHTML = Math.round(BMI * 100)/100;
-     if (BMI < 18.5) document.getElementById("comment").innerHTML = "Underweight";
-     if (BMI >= 18.5 && BMI <= 25) document.getElementById("comment").innerHTML = "Normal";
-     if (BMI >= 25 && BMI <= 30) document.getElementById("comment").innerHTML = "Obese";
-     if (BMI > 30) document.getElementById("comment").innerHTML = "Overweight";
-     document.getElementById("answer").value = output;
- }
+        document.getElementById("comMsg").innerHTML = comment;
+           
+    }
+    $('#multipleA').change(function () {
+              if ($('#multipleA').val() == 'meters') {
+                  ht = ht;
+              }
+              if ($('#multipleA').val() == 'feet') {
+                  ht = ht * 3.280839895;
+              }
+               
+              
+     });
+
+
+     
+});

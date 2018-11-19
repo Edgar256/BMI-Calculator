@@ -8,11 +8,13 @@
   <link rel="stylesheet" type="text/css" href="css/styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <!--<script src="js/cal.js"></script>-->
+  <script src="js/call.js"></script>
 
   <script>    
 
-    function computeBMI() {
+    $(document).ready(function () {
+
+      function computeBMI() {
         var ht = document.getElementById("height").value ;
         var wt = document.getElementById("weight").value ;
         var comment;
@@ -20,6 +22,7 @@
         var bmi = wt/sqHt;
         
         document.getElementById("result").innerHTML = bmi;
+
 
         if(bmi<18.5){
            comment = "You are Underweight, please see a doctor immediately";
@@ -40,6 +43,24 @@
         document.getElementById("comMsg").innerHTML = comment;
            
     }
+    /*$('#multipleA').change(function () {
+              if ($('#multipleA').val() == 'meters') {
+                  ht = ht;
+              }
+              if ($('#multipleA').val() == 'feet') {
+                  ht = ht * 3.280839895;
+              }
+               
+              
+     });*/
+
+
+     
+});
+
+   
+   
+
     /*function isNumber(evt) {
         evt = (evt) ? evt : window.event;
         var charCode = (evt.which) ? evt.which : evt.keyCode;
@@ -89,9 +110,9 @@
   <div class="col-sm-2 text-cm">Enter your height:</div>
   <div class="col-sm-4 text-cx">
       <input type="text" id="height" class="txtHeight" min="0" />
-          <select type="multiple" id="heightunits" class="dimHeight">
+          <select type="multipleA" id="heightunits" class="dimHeight">
               <option value="metres" selected="selected">metres</option>
-              <option value="inches">inches</option>
+              <option value="feet">inches</option>
           </select>
   </div>
   <div class="col-sm-3"></div>
@@ -102,7 +123,7 @@
   <div class="col-sm-2 text-cm">Enter your weight:</div>
   <div class="col-sm-4 text-cx">
       <input type="text" id="weight" class="txtHeight" min="0" />
-          <select type="multiple" id="weightunits" class="dimHeight">
+          <select type="multipleB" id="weightunits" class="dimHeight">
               <option value="kg" selected="selected">kilograms</option>
               <option value="lb">pounds</option>
           </select>
