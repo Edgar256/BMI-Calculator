@@ -8,31 +8,47 @@
   <link rel="stylesheet" type="text/css" href="css/styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="js/cal.js"></script>
+  <!--<script src="js/cal.js"></script>-->
 
-  <script type="text/javascript">
-     function computeBMI() {
-      //Obtain user inputs
-     var height = Number(document.getElementById("height").value);
-     var heightunits = document.getElementById("heightunits").value;
-     var weight = Number(document.getElementById("weight").value);
-     var weightunits = document.getElementById("weightunits").value;
+  <script>    
 
+    function computeBMI() {
+        var ht = document.getElementById("height").value ;
+        var wt = document.getElementById("weight").value ;
+        var comment;
+        var sqHt = ht * ht;
+        var bmi = wt/sqHt;
+        
+        document.getElementById("result").innerHTML = bmi;
 
-     //Convert all units to metric
-     if (heightunits == "inches") height /= 39.3700787;
-     if (weightunits == "lb") weight /= 2.20462;
+        if(bmi<18.5){
+           comment = "You are Underweight, please see a doctor immediately";
+        }
+        else if(bmi>18.5 && bmi<24.9){
+           comment = "You are in the normal weight range, keep it up";
+        }
+        else if(bmi>25 && bmi<29.9){
+           comment = "You are in the overweight range, please watch your diet";
+        }
+        else if(bmi>30){
+           comment = "You are grossly overweight, please see a doctor immediately";
+        }
+        else{
+          comment = "Please enter your weight and height";
+        }
 
-     //Perform calculation
-     var BMI = weight / Math.pow(height, 2);
-     //Display result of calculation
-      document.getElementById("output").innerHTML = Math.round(BMI * 100)/100;
-           if (BMI < 18.5) document.getElementById("comment").innerHTML = "Underweight";
-           if (BMI >= 18.5 && BMI <= 25) document.getElementById("comment").innerHTML = "Normal";
-           if (BMI >= 25 && BMI <= 30) document.getElementById("comment").innerHTML = "Obese";
-           if (BMI > 30) document.getElementById("comment").innerHTML = "Overweight";
-           document.getElementById("answer").value = output;
-       }
+        document.getElementById("comMsg").innerHTML = comment;
+           
+    }
+    /*function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }*/
+
   </script>
 </head>
 <body>
@@ -72,7 +88,7 @@
   <div class="col-sm-3"></div>
   <div class="col-sm-2 text-cm">Enter your height:</div>
   <div class="col-sm-4 text-cx">
-      <input type="text" id="height" class="txtHeight" />
+      <input type="text" id="height" class="txtHeight" min="0" />
           <select type="multiple" id="heightunits" class="dimHeight">
               <option value="metres" selected="selected">metres</option>
               <option value="inches">inches</option>
@@ -85,7 +101,7 @@
   <div class="col-sm-3"></div>
   <div class="col-sm-2 text-cm">Enter your weight:</div>
   <div class="col-sm-4 text-cx">
-      <input type="text" id="height" class="txtHeight" />
+      <input type="text" id="weight" class="txtHeight" min="0" />
           <select type="multiple" id="weightunits" class="dimHeight">
               <option value="kg" selected="selected">kilograms</option>
               <option value="lb">pounds</option>
@@ -105,7 +121,14 @@
 <div class="row">
   <div class="col-sm-3"></div>
   <div class="col-sm-6 txtBMI">
-      Horray !!! , Your Body Mass Index is <span id="output"> ?</span>
+      Horray !!! , Your Body Mass Index is <span id="result"> ?</span>
+  </div>
+  <div class="col-sm-3"></div>
+</div>
+<div class="row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6 txtBMI " id="comMsg">
+      
   </div>
   <div class="col-sm-3"></div>
 </div>
